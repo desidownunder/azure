@@ -158,6 +158,13 @@
         "description": "Virtual network address CIDR"
       }
     },
+    "vnetcustomid": {
+      "type": "string",
+      "defaultValue": "/subscriptions/20323c0d-c8c6-4674-808c-034883210448/resourceGroups/VNET/providers/Microsoft.Network/virtualNetworks/TEST_VNET_10.114.0.0_16",
+      "metadata": {
+        "description": "Mgmt subnet start address"
+      }
+    },
     "subnet0Name": {
       "type": "string",
       "defaultValue": "MGMT_10.114.5.0_24",
@@ -231,7 +238,7 @@
         "FWPrivateIPAddressUntrust": "[parameters('subnet1StartAddress')]",
         "FWPrivateIPAddressTrust": "[parameters('subnet2StartAddress')]",
         "publicIPAddressType": "Dynamic",
-        "vnetID": "/subscriptions/20323c0d-c8c6-4674-808c-034883210448/resourceGroups/VNET/providers/Microsoft.Network/virtualNetworks/TEST_VNET_10.114.0.0_16",
+        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
         "nsgname-mgmt": "[concat(parameters('vmName'), '-DefaultNSG')]",
         "subnet0Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet0Name'))]",
         "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",

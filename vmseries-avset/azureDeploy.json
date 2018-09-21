@@ -41,18 +41,21 @@
         },
         "dnsNameForPublicIP": {
             "type": "string",
+	    "defaultValue" : "pandnsname",
             "metadata": {
                 "description": "Globally unique DNS name to access management interface of VM-Series firewall"
             }
         },
         "vmName": {
             "type": "string",
+		"defaultValue" : "panvm",
             "metadata": {
                 "description": "Name of VM-Series VM in the Azure portal"
             }
         },
         "adminUserName": {
             "type": "string",
+		"defaultValue" : "bilal",
             "metadata": {
                 "description": "Username for VM-Series administrator"
             }
@@ -83,7 +86,7 @@
         },
         "imageVersion": {
             "type": "string",
-            "defaultValue": "latest",
+            "defaultValue": "8.0.0",
             "allowedValues": [
                 "7.1.1",
 		"8.0.0"		    
@@ -94,7 +97,7 @@
         }, 
         "imageSku": {
             "type": "string",
-            "defaultValue": "byol",
+            "defaultValue": "bundle2",
             "allowedValues": [
                 "byol",
 		"bundle1",
@@ -106,6 +109,7 @@
         }, 
         "vmSize": {
             "type": "string",
+		"defaultValue": "Standard_D3_v2",
             "allowedValues": [
                 "Standard_D3",
 		"Standard_D3_v2",

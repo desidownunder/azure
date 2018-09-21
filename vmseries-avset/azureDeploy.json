@@ -231,7 +231,7 @@
         "FWPrivateIPAddressUntrust": "[parameters('subnet1StartAddress')]",
         "FWPrivateIPAddressTrust": "[parameters('subnet2StartAddress')]",
         "publicIPAddressType": "Dynamic",
-        "vnetID": "['VNET', resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
+        "vnetID": "[resourceId('VNET', 'Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
         "nsgname-mgmt": "[concat(parameters('vmName'), '-DefaultNSG')]",
         "subnet0Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet0Name'))]",
         "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",

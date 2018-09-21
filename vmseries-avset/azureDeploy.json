@@ -231,7 +231,7 @@
         "FWPrivateIPAddressUntrust": "[parameters('subnet1StartAddress')]",
         "FWPrivateIPAddressTrust": "[parameters('subnet2StartAddress')]",
         "publicIPAddressType": "Dynamic",
-        "vnetID": "/subscriptions/20323c0d-c8c6-4674-808c-034883210448/resourceGroups/VNET/providers/Microsoft.Network/virtualNetworks/TEST_VNET_10.114.0.0_16",
+        "vnetID": "['VNET', resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
         "nsgname-mgmt": "[concat(parameters('vmName'), '-DefaultNSG')]",
         "subnet0Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet0Name'))]",
         "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
@@ -336,8 +336,7 @@
         "name": "[concat(variables('nicName'), '0')]",
         "location": "[parameters('location')]",
         "dependsOn": [
-            "[concat('Microsoft.Network/publicIPAddresses/', variables('fwpublicIPName'))]",
-            "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
+            "[concat('Microsoft.Network/publicIPAddresses/', variables('fwpublicIPName'))]"
         ],
         "tags": {
             "displayName": "[concat('NetworkInterfaces', '0')]"
@@ -361,9 +360,6 @@
         "type": "Microsoft.Network/networkInterfaces",
         "name": "[concat(variables('nicName'), '1')]",
         "location": "[parameters('location')]",
-        "dependsOn": [
-            "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
-        ],
         "tags": {
             "displayName": "[concat('NetworkInterfaces', '1')]"
         },
@@ -385,9 +381,6 @@
         "type": "Microsoft.Network/networkInterfaces",
         "name": "[concat(variables('nicName'), '2')]",
         "location": "[parameters('location')]",
-        "dependsOn": [
-            "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
-        ],
         "tags": {
             "displayName": "[concat('NetworkInterfaces', '2')]"
         },

@@ -237,7 +237,8 @@
         "nicName": "[concat(parameters('vmName'), '-eth')]",
         "FWPrivateIPAddressUntrust": "[parameters('subnet1StartAddress')]",
         "FWPrivateIPAddressTrust": "[parameters('subnet2StartAddress')]",
-        "publicIPAddressType": "Dynamic",
+        "publicIPAddressType": "Static",
+	"sku": "Standard",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',parameters('virtualNetworkName'))]",
         "nsgname-mgmt": "[concat(parameters('vmName'), '-DefaultNSG')]",
         "subnet0Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet0Name'))]",
@@ -284,6 +285,9 @@
         "type": "Microsoft.Network/publicIPAddresses",
         "name": "[variables('fwpublicIPName')]",
         "location": "[parameters('location')]",
+	"sku": {
+                "name": "[variables('sku')]"
+            },
         "properties": {
             "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
             "dnsSettings": {

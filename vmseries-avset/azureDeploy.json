@@ -353,9 +353,6 @@
                 "name": "[concat('ipconfig', '0')]",
                 "properties": {
                     "privateIPAllocationMethod": "Dynamic",
-                    "publicIPAddress": {
-                        "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('fwpublicIPName'))]"
-                    },
                     "subnet": {
                         "id": "[variables(concat('subnet','0','Ref'))]"
                     }

@@ -235,6 +235,7 @@
 	"imageOffer" : "vmseries1",
         "fwpublicIPName": "[concat(parameters('vmName'), '-fwMgmtPublicIP')]",
         "nicName": "[concat(parameters('vmName'), '-eth')]",
+        "FWPrivateIPAddressMgmt": "[parameters('subnet0StartAddress')]",
         "FWPrivateIPAddressUntrust": "[parameters('subnet1StartAddress')]",
         "FWPrivateIPAddressTrust": "[parameters('subnet2StartAddress')]",
         "publicIPAddressType": "Static",
@@ -352,7 +353,8 @@
             "ipConfigurations": [{
                 "name": "[concat('ipconfig', '0')]",
                 "properties": {
-                    "privateIPAllocationMethod": "Dynamic",
+                    "privateIPAllocationMethod": "Static",
+		    "privateIPAddress": "[variables('FWPrivateIPAddressMgmt')]",
                     "subnet": {
                         "id": "[variables(concat('subnet','0','Ref'))]"
                     }
